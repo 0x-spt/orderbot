@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-ROOT = Path(__file__).parent.parent
+ROOT = Path(__file__).parent
 PRIVATE = [(ROOT / "layouts" / "shots").resolve(), (ROOT / "tests" / "fixtures").resolve()]
 REASON = "needs real 1C captures, kept out of the public repository"
 
