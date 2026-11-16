@@ -1,0 +1,4 @@
+# Articles sold at a fixed price below the price floor: ARTICLE PRICE (per unit).
+# The floor for them is PRICE - 150 RUB. Optional: PRICE_EXCEPTIONS_FILE, default price_exceptions.txt.
+ART-0001 5900
+SET-02/A-2 21000  # a set

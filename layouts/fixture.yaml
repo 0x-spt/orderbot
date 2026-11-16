@@ -1,0 +1,89 @@
+# Calibrated on the operator's screenshots (tests/fixtures), not on production.
+# T10 makes a layout of its own at the production resolution.
+# Rectangles are [x0, y0, x1, y1] in pixels of the full frame.
+name: fixture
+size: [2880, 1672]
+
+rects:
+  search_field: [640, 205, 1930, 233]
+  # the "x" button at the right end of the field (between the separator at x 1964-1965
+  # and the border at 1994-1995): a click target only, never read
+  search_clear: [1966, 205, 1995, 233]
+  result_rows: [508, 290, 2830, 1503]
+  tabs: [20, 1075, 375, 1110]
+  stock_table: [31, 1119, 481, 1561]
+  picture: [38, 1122, 472, 1552]  # inside the frame of the «Изображение» tab
+  prices_table: [31, 1119, 481, 1530]
+  stock_total: [207, 1524, 290, 1557]
+  tables_crop: [20, 1075, 490, 1590]
+
+# Rows are located by the first line under the header and a fixed pitch.
+# The columns stop short of the grid lines, so a blank cell has no ink at all.
+grids:
+  results:
+    top: 287
+    pitch: 38
+    rows: 32
+    columns:
+      row: [508, 2830]
+      article: [788, 932]
+  stock:
+    top: 1159
+    pitch: 38
+    rows: 9
+    columns:
+      warehouse: [34, 203]
+      qty: [207, 290]
+      reserve: [294, 383]
+      order: [387, 478]
+  prices:
+    top: 1159
+    pitch: 38
+    rows: 9
+    columns:
+      type: [36, 179]
+      currency: [184, 254]
+      price: [258, 367]
+      unit: [371, 478]
+
+# Each anchor id has a reference crop in fixture-labels/<id>.png.
+anchors:
+  common:
+    menu: [20, 10, 1150, 40]
+    title: [40, 100, 210, 128]
+    contains: [503, 205, 612, 232]
+    grid_header: [586, 250, 2830, 285]
+    tab_stock: [26, 1080, 115, 1105]
+    tab_prices: [135, 1080, 195, 1105]
+    tab_image: [215, 1080, 362, 1105]
+    status: [8, 1645, 400, 1668]
+  stock:
+    hdr_warehouse: [34, 1122, 203, 1157]
+    hdr_qty: [207, 1122, 290, 1157]
+    hdr_reserve: [294, 1122, 383, 1157]
+  prices:
+    hdr_type: [36, 1122, 179, 1157]
+    hdr_currency: [184, 1122, 254, 1157]
+    hdr_price: [258, 1122, 367, 1157]
+
+# Must be free of anything on a normal screen; ink here means a foreign window.
+blank_regions:
+  tree: [20, 300, 450, 1050]
+  results_tail: [510, 1505, 2820, 1535]
+
+# Closed sets. Each id with Cyrillic text has a reference crop in fixture-labels/.
+warehouses:
+  wh_north: "СЕВЕР"
+  wh_south: "Южная,9"
+  wh_east: "Склад (восто"
+  wh_spb: "СПБ"
+
+price_rows:
+  - {id: pt_epr, type: "EPR", currency: "RUB"}
+  - {id: pt_hr_aed, type: "HR AED", currency: "AED"}
+  - {id: pt_hr_eur, type: "HR евро", currency: "EUR"}
+  - {id: pt_ppr_aed, type: "PPR AED", currency: "AED"}
+  - {id: pt_ppr_rub, type: "PPR рубли", currency: "RUB"}
+
+epr_row: pt_epr
+ppr_row: pt_ppr_rub

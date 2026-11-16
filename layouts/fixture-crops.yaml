@@ -1,0 +1,48 @@
+# Labeled crops for `python -m orderbot.screen.calibrate layouts/fixture-crops.yaml`.
+# In digit text each character names one glyph of the crop, left to right.
+# "?" skips a glyph, "." is one of the dots of a truncation ellipsis.
+layout: fixture.yaml
+images:
+  stock: {path: ../tests/fixtures/onec_stock.png, offset: [0, 2]}
+  prices: {path: ../tests/fixtures/onec_prices.png}
+
+digits:
+  - {image: prices, rect: [258, 1162, 367, 1195], text: "1880,00..."}
+  - {image: prices, rect: [258, 1200, 367, 1233], text: "15,7100"}
+  - {image: prices, rect: [258, 1238, 367, 1271], text: "5,5700"}
+  - {image: prices, rect: [258, 1276, 367, 1309], text: "50,0000"}
+  - {image: prices, rect: [258, 1314, 367, 1347], text: "1340,00..."}
+  - {image: stock, rect: [207, 1162, 290, 1195], text: "6"}
+  - {image: stock, rect: [207, 1200, 290, 1233], text: "3"}
+  - {image: stock, rect: [207, 1238, 290, 1271], text: "7"}
+  - {image: stock, rect: [207, 1276, 290, 1309], text: "6"}
+  # 2 and 9 exist only in text cells. These cells also carry 0, 1, 3, 5, 7 and the
+  # comma, which the build checks against the numeric cells, so a difference in
+  # rendering fails the calibration instead of giving a wrong template.
+  - {image: prices, rect: [590, 293, 780, 322], text: "?0000020537"}
+  - {image: prices, rect: [640, 205, 1200, 233], text: "???091????????091?00422??"}
+  - {image: stock, rect: [34, 1200, 203, 1233], text: "?????????,9"}
+  # The total row is drawn in another colour and rasterizes secondly.
+  - {image: stock, rect: [207, 1524, 290, 1557], text: "22", style: total}
+
+labels:
+  - {image: prices, id: menu, rect: [20, 10, 1150, 40]}
+  - {image: prices, id: title, rect: [40, 100, 210, 128]}
+  - {image: prices, id: contains, rect: [503, 205, 612, 232]}
+  - {image: prices, id: grid_header, rect: [586, 250, 2830, 285]}
+  - {image: prices, id: tab_stock, rect: [26, 1080, 115, 1105]}
+  - {image: prices, id: tab_prices, rect: [135, 1080, 195, 1105]}
+  - {image: prices, id: tab_image, rect: [215, 1080, 362, 1105]}
+  - {image: prices, id: status, rect: [8, 1645, 400, 1668]}
+  - {image: stock, id: hdr_warehouse, rect: [34, 1122, 203, 1157]}
+  - {image: stock, id: hdr_qty, rect: [207, 1122, 290, 1157]}
+  - {image: stock, id: hdr_reserve, rect: [294, 1122, 383, 1157]}
+  - {image: prices, id: hdr_type, rect: [36, 1122, 179, 1157]}
+  - {image: prices, id: hdr_currency, rect: [184, 1122, 254, 1157]}
+  - {image: prices, id: hdr_price, rect: [258, 1122, 367, 1157]}
+  - {image: stock, id: wh_north, rect: [34, 1162, 203, 1195]}
+  - {image: stock, id: wh_south, rect: [34, 1200, 203, 1233]}
+  - {image: stock, id: wh_east, rect: [34, 1238, 203, 1271]}
+  - {image: stock, id: wh_spb, rect: [34, 1276, 203, 1309]}
+  - {image: prices, id: pt_hr_eur, rect: [36, 1238, 179, 1271]}
+  - {image: prices, id: pt_ppr_rub, rect: [36, 1314, 179, 1347]}

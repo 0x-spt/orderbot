@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "orderbot"
+version = "0.1.0"
+description = "Checks marketplace FBS orders against 1C read from the screen over RDP"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28,<1",
+    "aiogram>=3.31,<4",
+    "Pillow>=13,<14",
+    "numpy>=2.5,<3",
+    "rapidocr-onnxruntime==1.4.4",  # OCR output is pinned by tests on real frames
+    "pyyaml>=6,<7",
+    "pyobjc-framework-Quartz>=13; sys_platform == 'darwin'",
+    "pyobjc-framework-Cocoa>=13; sys_platform == 'darwin'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9,<10", "respx>=0.23,<1", "pytest-asyncio>=1.4,<2", "ruff>=0.17"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+# E741: `l` is used for "line"; UP017: datetime.timezone.utc is kept for readability;
+# B023: the flagged closures are called within the same loop iteration; B905: zip of
+# equal-length sequences built together; E731: small named lambdas in tables
+ignore = ["E741", "UP017", "B023", "B905", "E731"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501", "E702", "E402", "F841", "B017"]
+"scripts/*" = ["E402"]

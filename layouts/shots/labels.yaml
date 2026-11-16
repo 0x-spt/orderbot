@@ -1,0 +1,43 @@
+# Hand-checked stock values of the real frames in this folder: warehouse -> [quantity, reserve].
+# The same values are asserted in tests/test_production_layout.py. `complete: true` means
+# every row of the table is listed, so the total row (sum of quantities) is labelled too.
+den091-gry-stock:
+  complete: true
+  rows: {"СЕВЕР": [4, 0], "ВОСТОК 2": [10, 0], "Южная,9": [2, 0], "СПБ": [5, 0]}
+live-den091-gry-stock:
+  complete: true
+  rows: {"СЕВЕР": [4, 0], "ВОСТОК 2": [9, 0], "Южная,9": [2, 0], "СПБ": [5, 0]}
+al27018-stock:
+  complete: true
+  rows: {"Главный склад": [2, 0], "Южная,9": [7, 0]}
+tp213-wrd-stock:
+  complete: true
+  rows: {"СЕВЕР": [8, 0], "ВОСТОК 2": [216, 0], "Южная,9": [3, 0], "ЕВРОПА": [6, 0],
+         "Европа Дубай": [84, 0], "Склад (восто": [0, 120], "СПБ": [4, 0], "Шоурум ДУБ": [0, 0]}
+tp213-wht-stock:
+  complete: true
+  rows: {"СЕВЕР": [1, 0], "ВОСТОК 2": [436, 0], "Южная,9": [14, 0], "Склад ДУБА": [0, 0],
+         "СПБ": [5, 0], "ШАНХАЙ M50": [0, 0], "Шоурум ДУБ": [0, 0]}
+tp273-wrd-stock:
+  complete: true
+  rows: {"СЕВЕР": [5, 0], "ВОСТОК 2": [180, 0], "Южная,9": [5, 0], "Европа Дубай": [90, 0],
+         "Склад (восто": [0, 150], "СПБ": [6, 0], "Шоурум ДУБ": [0, 0]}
+tp273-obl-stock:
+  complete: true
+  rows: {"СЕВЕР": [0, 1], "ЕВРОПА": [300, 0], "Склад (восто": [0, 78], "Шоурум ДУБ": [0, 0]}
+live-1203-6-stock-tables:
+  complete: true
+  rows: {"Образцы пер": [1, 0], "СЕВЕР": [19, 0], "Главный склад": [10, 0], "Южная,9": [7, 0],
+         "СПБ": [15, 0]}
+live-nrc121-stock-tables:
+  complete: true
+  rows: {"СЕВЕР": [8, 0]}
+live-df25001-stock-tables:
+  complete: false
+  rows: {"КИТАЙ": [624, 0], "Склад MAINL": [92, 0], "Главный склад": [419, 0]}
+live-stp-stock:
+  complete: false
+  rows: {"ПОДСОРТИР": [6, 0], "ВОСТОК 2": [19, 0], "СПБ": [6, 0]}
+live-sop161-stock-tables:
+  complete: false
+  rows: {"Транзитный в": [0, 0], "Шоурум ДУБ": [0, 0], "Склад (восто": [25, 0]}

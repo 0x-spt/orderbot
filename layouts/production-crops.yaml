@@ -1,0 +1,109 @@
+# Labeled crops for `python -m orderbot.screen.calibrate layouts/production-crops.yaml`.
+# In digit text each character names one glyph of the crop, left to right.
+# "?" skips a glyph, "." is one of the dots of a truncation ellipsis.
+# Cell rects are the layout's grid cells: row k of a table is y = 1033 + 38k + 3 .. + 36.
+layout: production.yaml
+images:
+  probe: {path: shots/probe-1.png}
+  den_stock: {path: shots/den091-gry-stock.png}
+  den_prices: {path: shots/den091-gry-prices.png}
+  al_stock: {path: shots/al27018-stock.png}
+  al_prices: {path: shots/al27018-prices.png}
+  tp_stock: {path: shots/tp213-wrd-stock.png}
+  tp_prices: {path: shots/tp213-wrd-prices.png}
+  wht_stock: {path: shots/tp213-wht-stock.png}
+  t273_stock: {path: shots/tp273-wrd-stock.png}
+  obl_stock: {path: shots/tp273-obl-stock.png}
+  df_stock: {path: shots/live-df25001-stock-tables.png}  # tables crop of a live snapshot, 2026-11-04
+  stp_stock: {path: shots/live-stp-stock.png}
+  obr_stock: {path: shots/live-1203-6-stock-tables.png}  # tables crop of a live snapshot pasted at tables_crop, 2026-11-06
+  sop_stock: {path: shots/live-sop161-stock-tables.png}  # tables crop of a live snapshot pasted at tables_crop, 2026-11-09
+  img_tab: {path: shots/live-image-tab.png}  # the «Изображение» tab open, live 2026-11-06
+  notice: {path: shots/live-task-notice.png}  # 1C «Оповещение о задачах» over «Номенклатура», live 2026-11-16
+  wide: {path: shots/live-wide-article.png}  # the article column widened, 2026-11-05  # live window capture, STP223-NAC, 2026-11-05
+
+digits:
+  # prices, regular cells
+  - {image: den_prices, rect: [258, 1036, 367, 1069], text: "1880,00..."}
+  - {image: den_prices, rect: [258, 1074, 367, 1107], text: "15,7100"}
+  - {image: den_prices, rect: [258, 1112, 367, 1145], text: "5,5700"}
+  - {image: den_prices, rect: [258, 1150, 367, 1183], text: "50,0000"}
+  - {image: den_prices, rect: [258, 1188, 367, 1221], text: "1340,00..."}
+  - {image: al_prices, rect: [258, 1036, 367, 1069], text: "7300,00..."}
+  - {image: al_prices, rect: [258, 1074, 367, 1107], text: "19,0000"}
+  - {image: al_prices, rect: [258, 1112, 367, 1145], text: "5150,00..."}
+  - {image: tp_prices, rect: [258, 1036, 367, 1069], text: "4160,00..."}
+  - {image: tp_prices, rect: [258, 1074, 367, 1107], text: "34,8800"}
+  - {image: tp_prices, rect: [258, 1112, 367, 1145], text: "12,3600"}
+  - {image: tp_prices, rect: [258, 1150, 367, 1183], text: "100,0000"}
+  - {image: tp_prices, rect: [258, 1188, 367, 1221], text: "2970,00..."}
+  # stock quantities and reserve, regular cells
+  - {image: den_stock, rect: [207, 1036, 290, 1069], text: "4"}
+  - {image: den_stock, rect: [207, 1074, 290, 1107], text: "10"}
+  - {image: den_stock, rect: [207, 1112, 290, 1145], text: "2"}
+  - {image: den_stock, rect: [207, 1150, 290, 1183], text: "5"}
+  - {image: al_stock, rect: [207, 1036, 290, 1069], text: "2"}  # the focused row
+  - {image: al_stock, rect: [207, 1074, 290, 1107], text: "7"}
+  - {image: tp_stock, rect: [207, 1036, 290, 1069], text: "8"}
+  - {image: tp_stock, rect: [207, 1074, 290, 1107], text: "216"}
+  - {image: tp_stock, rect: [207, 1112, 290, 1145], text: "3"}
+  - {image: tp_stock, rect: [207, 1150, 290, 1183], text: "6"}
+  - {image: tp_stock, rect: [207, 1188, 290, 1221], text: "84"}
+  - {image: tp_stock, rect: [294, 1226, 383, 1259], text: "120"}
+  - {image: tp_stock, rect: [207, 1264, 290, 1297], text: "4"}
+  - {image: wht_stock, rect: [207, 1036, 290, 1069], text: "1"}
+  - {image: wht_stock, rect: [207, 1074, 290, 1107], text: "436"}
+  - {image: wht_stock, rect: [207, 1112, 290, 1145], text: "14"}
+  - {image: wht_stock, rect: [207, 1188, 290, 1221], text: "5"}
+  - {image: t273_stock, rect: [207, 1074, 290, 1107], text: "180"}
+  - {image: t273_stock, rect: [207, 1150, 290, 1183], text: "90"}
+  - {image: t273_stock, rect: [294, 1188, 383, 1221], text: "150"}
+  - {image: obl_stock, rect: [294, 1036, 383, 1069], text: "1"}
+  - {image: obl_stock, rect: [207, 1074, 290, 1107], text: "300"}
+  - {image: obl_stock, rect: [294, 1112, 383, 1145], text: "78"}
+  # The total row is drawn in another colour and rasterizes secondly.
+  - {image: den_stock, rect: [207, 1398, 290, 1431], text: "21", style: total}
+  - {image: al_stock, rect: [207, 1398, 290, 1431], text: "9", style: total}
+  - {image: tp_stock, rect: [207, 1398, 290, 1431], text: "321", style: total}
+  - {image: tp_stock, rect: [294, 1398, 383, 1431], text: "120", style: total}
+  - {image: wht_stock, rect: [207, 1398, 290, 1431], text: "456", style: total}
+  - {image: t273_stock, rect: [207, 1398, 290, 1431], text: "286", style: total}
+  - {image: t273_stock, rect: [294, 1398, 383, 1431], text: "150", style: total}
+  - {image: obl_stock, rect: [207, 1398, 290, 1431], text: "300", style: total}
+  - {image: obl_stock, rect: [294, 1398, 383, 1431], text: "79", style: total}
+
+labels:
+  - {image: tp_prices, id: menu, rect: [20, 110, 1150, 140]}
+  - {image: tp_prices, id: title, rect: [40, 200, 210, 228]}
+  - {image: notice, id: notice_title, rect: [40, 200, 330, 228]}
+  - {image: tp_prices, id: contains, rect: [503, 305, 612, 332]}
+  - {image: wide, id: grid_header, rect: [586, 350, 2830, 385]}
+  - {image: tp_prices, id: tab_stock, rect: [26, 954, 115, 979]}
+  - {image: tp_prices, id: tab_prices, rect: [135, 954, 195, 979]}
+  - {image: tp_prices, id: tab_image, rect: [215, 954, 362, 979]}
+  - {image: tp_prices, id: status, rect: [8, 1519, 400, 1542]}
+  - {image: img_tab, id: tab_image_on, rect: [20, 978, 375, 984]}
+  - {image: tp_stock, id: hdr_warehouse, rect: [34, 996, 203, 1031]}
+  - {image: tp_stock, id: hdr_qty, rect: [207, 996, 290, 1031]}
+  - {image: tp_stock, id: hdr_reserve, rect: [294, 996, 383, 1031]}
+  - {image: tp_prices, id: hdr_type, rect: [36, 996, 179, 1031]}
+  - {image: tp_prices, id: hdr_currency, rect: [184, 996, 254, 1031]}
+  - {image: tp_prices, id: hdr_price, rect: [258, 996, 367, 1031]}
+  - {image: tp_stock, id: wh_north, rect: [34, 1036, 203, 1069]}
+  - {image: tp_stock, id: wh_east2, rect: [34, 1074, 203, 1107]}
+  - {image: tp_stock, id: wh_south, rect: [34, 1112, 203, 1145]}
+  - {image: tp_stock, id: wh_europa, rect: [34, 1150, 203, 1183]}
+  - {image: tp_stock, id: wh_europa_dubai, rect: [34, 1188, 203, 1221]}
+  - {image: tp_stock, id: wh_east, rect: [34, 1226, 203, 1259]}
+  - {image: tp_stock, id: wh_spb, rect: [34, 1264, 203, 1297]}
+  - {image: tp_stock, id: wh_showroom_dub, rect: [34, 1302, 203, 1335]}
+  - {image: wht_stock, id: wh_dubai_store, rect: [34, 1150, 203, 1183]}
+  - {image: wht_stock, id: wh_shanghai, rect: [34, 1226, 203, 1259]}
+  - {image: al_stock, id: wh_main, rect: [34, 1036, 203, 1069]}  # the focused row
+  - {image: df_stock, id: wh_china, rect: [34, 1150, 203, 1183]}
+  - {image: df_stock, id: wh_mainl, rect: [34, 1188, 203, 1221]}
+  - {image: stp_stock, id: wh_podsort, rect: [34, 1112, 203, 1145]}
+  - {image: obr_stock, id: wh_samples, rect: [34, 1150, 203, 1183]}
+  - {image: sop_stock, id: wh_transit, rect: [34, 1188, 203, 1221]}
+  - {image: tp_prices, id: pt_hr_eur, rect: [36, 1112, 179, 1145]}
+  - {image: tp_prices, id: pt_ppr_rub, rect: [36, 1188, 179, 1221]}

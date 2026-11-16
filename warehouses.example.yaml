@@ -1,0 +1,24 @@
+# marketplace -> {marketplace warehouse name: on-screen warehouse name in 1C}
+ozon:
+  "Склад Тест-1": "Тест 1С"
+# Yandex Market: campaign id (FBS shop) -> on-screen warehouse name in 1C
+yandex:
+  "100000001": "Тест 1С"
+# Wildberries: warehouseId -> on-screen warehouse name in 1C (python -m orderbot.recon wb)
+wb:
+  "1000001": "Тест 1С"
+# Second company «Бета» (SECOND_* keys in .env): same format, its own sections. Without
+# ozon_second its Ozon orders go to a person («склад не сопоставлен»); without
+# yandex_second its Yandex Market is not connected. List them with
+# python -m orderbot.recon warehouses second
+# ozon_second:
+#   "Склад Бета-1": "Тест 1С"
+# yandex_second:
+#   "100000002": "Тест 1С"
+# Express warehouses: orders from them are marked "🚀 ЭКСПРЕСС" in the message.
+# Ozon: marketplace warehouse names; Yandex Market: campaign ids. Optional.
+express:
+  ozon: ["СЕВЕР EXPRESS 🚀"]
+  yandex: ["900000009"]
+  # ozon_second: ["Склад Бета EXPRESS"]
+  # yandex_second: ["100000003"]

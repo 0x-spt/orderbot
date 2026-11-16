@@ -1,0 +1,131 @@
+# Calibrated on captures of the operator's 1C window (layouts/shots/), taken by
+# `python -m orderbot.screen.calibrate --capture` exactly as the robot sees the window:
+# the macOS title bar and the 1C title are included, the Windows taskbar is at the bottom.
+# Against the fixture the form's upper part is 100 px lower and its lower part
+# (tabs, tables, status) 126 px higher; columns are where the fixture has them.
+# Rectangles are [x0, y0, x1, y1] in pixels of the full frame.
+name: production
+size: [2880, 1630]
+data_settle_s: 2.0
+
+rects:
+  search_field: [642, 303, 1930, 333]  # inside the rounded border
+  # the "x" button at the right end of the field: a click target only, never read
+  search_clear: [1966, 305, 1995, 333]
+  # the left edge of the vertical scroll bar of «Остатки»: 1C shows it (and narrows the
+  # columns) when the table has more rows than slots — seen live, TP231-WHT, ten rows
+  stock_scrollbar: [448, 1035, 450, 1380]
+  result_rows: [508, 390, 2830, 1413]
+  tabs: [20, 949, 375, 984]
+  stock_table: [31, 993, 481, 1435]
+  prices_table: [31, 993, 481, 1404]
+  stock_total: [207, 1398, 290, 1431]
+  reserve_total: [294, 1398, 383, 1431]  # checked against the reserve column when present
+  tables_crop: [20, 949, 490, 1464]
+  # inside the dotted frame of the «Изображение» tab (the frame takes the stock table's
+  # place; x 34-37 and 472-475 are the panel's cream, not the white of the frame)
+  picture: [38, 996, 472, 1426]
+  # the "x" of the inner window «Оповещение о задачах» (1C task reminder): the
+  # only thing the robot closes, and only while anchors.task_notice all match
+  notice_close: [2850, 205, 2870, 224]
+
+# Rows are located by the first line under the header and a fixed pitch.
+# The columns stop short of the grid lines, so a blank cell has no ink at all.
+# The dotted border of a focused stock row lies on the two pixel rows next to each grid
+# line and on x 32-33 and 478-479, outside every cell.
+grids:
+  results:
+    top: 387
+    pitch: 38
+    rows: 27  # the last full row ends at the line y=1413, just above the scroll bar
+    columns:
+      row: [508, 2830]
+      article: [788, 1141]  # column widened in 1C later
+  stock:
+    top: 1033
+    pitch: 38
+    rows: 9  # nine full slots above the totals row (y=1394)
+    columns:
+      warehouse: [34, 203]
+      qty: [207, 290]
+      reserve: [294, 383]
+      order: [387, 478]
+  prices:
+    top: 1033
+    pitch: 38
+    rows: 9  # the horizontal scroll bar starts at y=1405
+    columns:
+      type: [36, 179]
+      currency: [184, 254]
+      price: [258, 367]
+      unit: [371, 478]
+
+# Each anchor id has a reference crop in production-labels/<id>.png.
+# The 1C title line (currency rates of the day) and the taskbar clock change: no anchors there.
+anchors:
+  common:
+    menu: [20, 110, 1150, 140]
+    title: [40, 200, 210, 228]
+    contains: [503, 305, 612, 332]
+    grid_header: [586, 350, 2830, 385]
+    tab_stock: [26, 954, 115, 979]
+    tab_prices: [135, 954, 195, 979]
+    tab_image: [215, 954, 362, 979]
+    status: [8, 1519, 400, 1542]
+  stock:
+    hdr_warehouse: [34, 996, 203, 1031]
+    hdr_qty: [207, 996, 290, 1031]
+    hdr_reserve: [294, 996, 383, 1031]
+  prices:
+    hdr_type: [36, 996, 179, 1031]
+    hdr_currency: [184, 996, 254, 1031]
+    hdr_price: [258, 996, 367, 1031]
+  # The «Изображение» tab has no header: it is told by the tab strip, where the open tab has
+  # no line under it (the line at y=980 runs under «Остатки» and «Цены» only).
+  image:
+    tab_image_on: [20, 978, 375, 984]
+  # 1C's task reminder opened over «Номенклатура» (the robot closes it). Its
+  # title takes the place of the «Номенклатура» title; the 1C menu and status bar stay.
+  task_notice:
+    menu: [20, 110, 1150, 140]
+    status: [8, 1519, 400, 1542]
+    notice_title: [40, 200, 330, 228]
+
+# Must be free of anything on a normal screen; ink here means a foreign window.
+blank_regions:
+  tree: [20, 400, 450, 925]
+  # under the last row slot of either table: empty on both tabs and with no item selected
+  tables_tail: [34, 1381, 478, 1393]
+
+# The picture frame of the «Изображение» tab covers these (its cream edge and the picture
+# itself): not required blank while that tab is recognised by the anchors above.
+image_tab_unchecked: [tables_tail]
+
+# Closed sets. Each id with Cyrillic text has a reference crop in production-labels/.
+warehouses:
+  wh_north: "СЕВЕР"
+  wh_east2: "ВОСТОК 2"
+  wh_main: "Главный склад"
+  wh_south: "Южная,9"
+  wh_europa: "ЕВРОПА"
+  wh_europa_dubai: "Европа Дубай"
+  wh_east: "Склад (восто"
+  wh_dubai_store: "Склад ДУБА"
+  wh_shanghai: "ШАНХАЙ M50"
+  wh_spb: "СПБ"
+  wh_showroom_dub: "Шоурум ДУБ"
+  wh_china: "КИТАЙ"
+  wh_mainl: "Склад MAINL"
+  wh_podsort: "ПОДСОРТИР"
+  wh_samples: "Образцы пер"
+  wh_transit: "Транзитный в"
+
+price_rows:
+  - {id: pt_epr, type: "EPR", currency: "RUB"}
+  - {id: pt_hr_aed, type: "HR AED", currency: "AED"}
+  - {id: pt_hr_eur, type: "HR евро", currency: "EUR"}
+  - {id: pt_ppr_aed, type: "PPR AED", currency: "AED"}
+  - {id: pt_ppr_rub, type: "PPR рубли", currency: "RUB"}
+
+epr_row: pt_epr
+ppr_row: pt_ppr_rub
